@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^3.4.1",
     "chartist": "0.10.1",
     "firebase": "^7.14.4",
     "interactjs": "^1.9.14",
     "node-sass": "4.12.0",
     "react": "16.8.6",
-    "react-bootstrap": "0.32.4",
+    "react-bootstrap": "^0.32.4",
     "react-chartist": "0.13.3",
     "react-dom": "16.8.6",
     "react-google-maps": "9.4.5",
@@ -21,7 +21,8 @@
     "react-scripts": "3.0.0",
     "react-toggle": "4.0.2",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "three-dots": "^0.2.0"
   },
   "devDependencies": {
     "@types/googlemaps": "3.30.19",

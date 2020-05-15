@@ -33,14 +33,11 @@ import image from "assets/img/sidebar-3.jpg";
 import {connect} from 'react-redux'
 import * as actions from '../redux/action'
 
-function mapStateToProps(state){
-  return {state}
-}
-function mapDispatchToProps(dispatch){
-  return {dispatch}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)
+export default connect((state) => ({state}), 
+(dispatch) => ({
+  getGithubData : (token) => {dispatch(actions.getGithubData(token))},
+  postData: (dir, data) => {dispatch(actions.postData(dir, data))}
+}))
 (
   class Admin extends Component {
   constructor(props) {
@@ -102,22 +99,32 @@ export default connect(mapStateToProps, mapDispatchToProps)
       this.setState({ fixedClasses: "dropdown" });
     }
   };
-  //componentDidMount() {}
-  // componentDidUpdate(e) {
-  //   if (
-  //     window.innerWidth < 993 &&
-  //     e.history.location.pathname !== e.location.pathname &&
-  //     document.documentElement.className.indexOf("nav-open") !== -1
-  //   ) {
-  //     document.documentElement.classList.toggle("nav-open");
-  //   }
-  //   if (e.history.action === "PUSH") {
-  //     document.documentElement.scrollTop = 0;
-  //     document.scrollingElement.scrollTop = 0;
-  //     this.refs.mainPanel.scrollTop = 0;
-  //   }
-  // }
-  render() {
+  componentDidMount() {
+    const {token} = this.props.state
+    this.props.getGithubData(token)
+  }
+  componentDidUpdate(e) {
+    if (
+      window.innerWidth < 993 &&
+      e.history.location.pathname !== e.location.pathname &&
+      document.documentElement.className.indexOf("nav-open") !== -1
+    ) {
+      document.documentElement.classList.toggle("nav-open");
+    }
+    if (e.history.action === "PUSH") {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+      this.refs.mainPanel.scrollTop = 0;
+    }
+  }
+  renderSpinner(){
+    return(
+      <span >
+        <i className = "dot-spin"> Loading </i>
+      </span>
+    )
+  }
+  renderPages() {
     return (
       <div className="wrapper">
         <Sidebar {...this.props} routes={routes} image={this.state.image}
@@ -127,10 +134,11 @@ export default connect(mapStateToProps, mapDispatchToProps)
           <AdminNavbar
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
+            hideAutoButtons = {true}
           />
           <Switch>{this.getRoutes(routes)}</Switch>
           <Footer />
-          <FixedPlugin
+          {/* <FixedPlugin
             handleImageClick={this.handleImageClick}
             handleColorClick={this.handleColorClick}
             handleHasImage={this.handleHasImage}
@@ -139,10 +147,15 @@ export default connect(mapStateToProps, mapDispatchToProps)
             mini={this.state["mini"]}
             handleFixedClick={this.handleFixedClick}
             fixedClasses={this.state.fixedClasses}
-          />
+          /> */}
         </div>
       </div>
     );
+  }
+
+  render(){
+    const {repos} = this.props.state
+    return repos ? this.renderPages() : this.renderSpinner()
   }
 })
 

@@ -56,19 +56,30 @@ export function getGithubData(token){
             headers: {
                 "Authorization": "token " + token,
                 'Content-Type': 'application/json'
-              },
+              },    
         })
 
         .then(response => response.json())
         .then(json => {
             //var fs = require('fs')
             //fs.writeFile("./local_storage/githubData.json", json)
+            console.log("data: ", json)
             dispatch({ type: constants.PUT_STATE, payload: {repos: json} });
         })
         .catch(error => {
             console.error("FETCH FAIL: " + error)
         });
         
+    }
+}
+export function logout(){
+    return function(dispatch){
+
+        firebase.auth().signOut().then(
+            () => {
+                dispatch({type: constants.PUT_STATE, payload: {loggedOn: false, token: null}})
+            }
+        )
     }
 }
 export function login(provider){
@@ -138,4 +149,8 @@ export function postData(directory, data){
         .then((json) => {console.log("json: \n",json);dispatch({type: constants.PUT_STATE, payload: {status: "SUCCESS_POST_DATA"}})})
         .catch(error => {console.error(error)})
     };
+}
+
+export function setRepo(repo){
+    return {type: constants.PUT_STATE, payload: {activeRepo: repo}}
 }
