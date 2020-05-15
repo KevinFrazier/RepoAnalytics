@@ -63,6 +63,7 @@ export function getGithubData(token){
         .then(json => {
             //var fs = require('fs')
             //fs.writeFile("./local_storage/githubData.json", json)
+            console.log("data: ", json)
             dispatch({ type: constants.PUT_STATE, payload: {repos: json} });
         })
         .catch(error => {

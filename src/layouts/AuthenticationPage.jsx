@@ -19,11 +19,7 @@ export default connect(
 class AuthenticationPage extends React.Component{
     constructor(props){
         super(props)}
-    componentDidMount(){
-        console.log("Authentication\n","componentDidMount\n",this.props)
-    }
     render(){
-        console.log("Authenticcation", "render" , this.props)
 
         const {loggedOn}  = this.props
 
