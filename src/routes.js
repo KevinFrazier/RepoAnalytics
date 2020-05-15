@@ -34,27 +34,27 @@ const dashboardRoutes = [
     component: Dashboard,
     layout: "/admin"
   },
-  {
-    path: "/Contact",
-    name: "Contact",
-    icon: "pe-7s-mail",
-    component: () => <div>Test</div>,
-    layout: "/admin"
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "pe-7s-map-marker",
-    component: Maps,
-    layout: "/admin"
-  },
-  {
-    path: "/updates",
-    name: "Updates",
-    icon: "pe-7s-science",
-    component: Icons,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/Contact",
+  //   name: "Contact",
+  //   icon: "pe-7s-mail",
+  //   component: () => <div>Test</div>,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/maps",
+  //   name: "Maps",
+  //   icon: "pe-7s-map-marker",
+  //   component: Maps,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/updates",
+  //   name: "Updates",
+  //   icon: "pe-7s-science",
+  //   component: Icons,
+  //   layout: "/admin"
+  // },
 ];
 
 export default dashboardRoutes;

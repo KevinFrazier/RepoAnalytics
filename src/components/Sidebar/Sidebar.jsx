@@ -20,7 +20,9 @@ import { NavLink } from "react-router-dom";
 
 import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
 
-import logo from "assets/img/reactlogo.png";
+//import logo from "assets/img/reactlogo.png";
+import logo from '../../logo.png'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 class Sidebar extends Component {
   constructor(props) {
@@ -55,25 +57,19 @@ class Sidebar extends Component {
           ) : (
             null
           )}
-        <div className="logo">
-          <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
-            className="simple-text logo-mini"
-          >
-            <div className="logo-img">
-              <img src={logo} alt="logo_image" />
-            </div>
-          </a>
-          <a
-            href="https://interactjs.io/"
-            className="simple-text logo-normal"
-          >
-            interactjs.io
-          </a>
-        </div>
+          {!this.props.hideLogo ? 
+            <div className="logo">
+              <a //href="https://interactjs.io/"
+                className="simple-text logo-normal"
+              >
+                <img src={logo} style = {{paddingLeft: "18%", textAlign: "center"}} alt="logo_image" />
+                <h5 style = {{textAlign: "center"}}>Repolytics</h5>
+              </a>
+            </div> : null
+          }
         <div className="sidebar-wrapper">
           <ul className="nav">
-            {this.state.width <= 991 ? <AdminNavbarLinks /> : null}
+            {this.state.width <= 991 ? <AdminNavbarLinks hideActionButtons = {true} /> : null}
             {this.props.routes.map((prop, key) => {
               if (!prop.redirect)
                 return (

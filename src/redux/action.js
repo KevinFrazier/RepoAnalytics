@@ -71,6 +71,16 @@ export function getGithubData(token){
         
     }
 }
+export function logout(){
+    return function(dispatch){
+
+        firebase.auth().signOut().then(
+            () => {
+                dispatch({type: constants.PUT_STATE, payload: {loggedOn: false, token: null}})
+            }
+        )
+    }
+}
 export function login(provider){
     
     var myProvider = null
