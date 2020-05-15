@@ -25,8 +25,16 @@ import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
 
 import * as React from 'react'
+import Repos from "views/Repos";
 
 const dashboardRoutes = [
+  {
+    path:"/repos",
+    name: "Repos",
+    icon: "pe-7s-science",
+    component: Repos,
+    layout: "/admin"
+  },
   {
     path: "/dashboard",
     name: "Dashboard",

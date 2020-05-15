@@ -56,7 +56,7 @@ export function getGithubData(token){
             headers: {
                 "Authorization": "token " + token,
                 'Content-Type': 'application/json'
-              },
+              },    
         })
 
         .then(response => response.json())
@@ -149,4 +149,8 @@ export function postData(directory, data){
         .then((json) => {console.log("json: \n",json);dispatch({type: constants.PUT_STATE, payload: {status: "SUCCESS_POST_DATA"}})})
         .catch(error => {console.error(error)})
     };
+}
+
+export function setRepo(repo){
+    return {type: constants.PUT_STATE, payload: {activeRepo: repo}}
 }

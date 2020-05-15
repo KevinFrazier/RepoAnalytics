@@ -26,7 +26,7 @@ class AuthenticationPage extends React.Component{
         if(loggedOn){
             return(
                 <div>
-                    <Redirect to={"/admin/dashboard"}/>
+                    <Redirect to={"/admin/repos"}/>
                 </div>
             )
         }
@@ -52,7 +52,7 @@ class AuthenticationPage extends React.Component{
                         <img src={logo} alt="logo_image" />
                         <h2>Repolytics</h2>
                     
-                    <Button style = {{backgroundColor: "#000000"}} fill simple bsSize="large" onClick = {this.props.login} >
+                    <Button style = {{backgroundColor: "#000000"}} fill bsSize="large" onClick = {this.props.login} >
                         <i className = "fa fa-github fa-2x" style = {{display: "inline", paddingRight: "20px"}}>
 
 

@@ -117,7 +117,14 @@ export default connect((state) => ({state}),
       this.refs.mainPanel.scrollTop = 0;
     }
   }
-  render() {
+  renderSpinner(){
+    return(
+      <span >
+        <i className = "dot-spin"> Loading </i>
+      </span>
+    )
+  }
+  renderPages() {
     return (
       <div className="wrapper">
         <Sidebar {...this.props} routes={routes} image={this.state.image}
@@ -144,6 +151,11 @@ export default connect((state) => ({state}),
         </div>
       </div>
     );
+  }
+
+  render(){
+    const {repos} = this.props.state
+    return repos ? this.renderPages() : this.renderSpinner()
   }
 })
 
