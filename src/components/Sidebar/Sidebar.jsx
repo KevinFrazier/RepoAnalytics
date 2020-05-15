@@ -65,10 +65,10 @@ class Sidebar extends Component {
             </div>
           </a>
           <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
+            href="https://interactjs.io/"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            interactjs.io
           </a>
         </div>
         <div className="sidebar-wrapper">

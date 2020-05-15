@@ -22,7 +22,7 @@ import PropTypes from "prop-types";
 
 class CustomButton extends Component {
   render() {
-    const { fill, simple, pullRight, round, block, ...rest } = this.props;
+    const { fill, simple, pullRight, round, block, ...rest } = this.props
 
     const btnClasses = cx({
       "btn-fill": fill,
