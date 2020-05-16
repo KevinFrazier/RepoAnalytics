@@ -35,6 +35,8 @@ import {
   legendBar
 } from "variables/Variables.jsx";
 
+import { connect } from "react-redux";
+
 class Dashboard extends Component {
   createLegend(json) {
     var legend = [];

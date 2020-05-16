@@ -57,7 +57,7 @@ export default connect((state) => ({state}),
         return (
           <Route
             path={prop.layout + prop.path}
-            render={props => (
+            render={(props) => (
               <prop.component
                 //handleClick={this.handleNotificationClick}
               />
