@@ -2,7 +2,9 @@ import * as constants from './constants'
 const initState = {
     loggedOn :false,
     startup: false,
-    redirectLink:null
+    redirectLink:null,
+    activeRepo : null,
+    repos: null
 }
 
 

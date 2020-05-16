@@ -51,7 +51,7 @@ class Header extends Component {
           <Navbar.Brand>
             <a href="#pablo">{this.props.brandText}</a>
           </Navbar.Brand>
-          <Navbar.Toggle hideActionButtons = {this.props.hideButtons} onClick={this.mobileSidebarToggle} />
+          <Navbar.Toggle onClick={this.mobileSidebarToggle} />
         </Navbar.Header>
         <Navbar.Collapse>
           <AdminNavbarLinks hideActionButtons = {this.props.hideButtons} />

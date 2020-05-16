@@ -122,7 +122,9 @@ export function login(provider){
                     //dispatch(postData(`articles`, {token: result.credential.accessToken}))
                     dispatch({type: constants.PUT_STATE, payload: {token: result.credential.accessToken, loggedOn : true}})
                     console.log("updating redirectLink")
-                    dispatch({type: constants.REDIRECT, payload:{redirectLink: "/admin/dashboard"}})
+                    //dispatch({type: constants.REDIRECT, payload:{redirectLink: "/admin/dashboard"}})
+                    dispatch(getGithubData(result.credential.accessToken))
+                    
                 })
                 // .then((result) => {postData(`articles/`, {token: result.credential.accessToken})})
                 // .then((result) => {dispatch({type: constants.PUT_STATE, payload: {status: "success", user: result.user, token: result.credential.accessToken, provider: provider, loggedOn : true, error: null}})})

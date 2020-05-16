@@ -25,7 +25,7 @@ import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
 
 import * as React from 'react'
-import Repos from "views/Repos";
+import Repos from "views/Repos.jsx";
 
 const dashboardRoutes = [
   {
