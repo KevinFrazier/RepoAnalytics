@@ -64,7 +64,7 @@ export default connect(({repos}) => ({repos}),
                                 key={index}
                                 >
                                 <Button style = {{margin: ".5in", width:"calc(100% - (1in))", height:"100%"}} className="btn btn-simple btn-lg font-icon-detail " onClick = {() => {this.handleUpdate(value)}}>
-                                    <div style = {{}/*{marginBottom: "10px"}*/}><i className={`${faArr[parseInt(Math.random()*faArr.length)]} fa-2x`} /></div>
+                                    <div style = {{marginBottom: "10px"}}><i className={`${faArr[parseInt(Math.random()*faArr.length)]} fa-2x`} /></div>
                                     {value.name}
                                 </Button>
                                 </Col>

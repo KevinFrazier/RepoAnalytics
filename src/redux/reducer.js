@@ -1,10 +1,12 @@
 import * as constants from './constants'
+import { database } from 'firebase';
 const initState = {
     loggedOn :false,
     startup: false,
     redirectLink:null,
     activeRepo : null,
-    repos: null
+    repos: null,
+    data: null
 }
 
 

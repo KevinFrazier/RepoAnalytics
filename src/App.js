@@ -27,11 +27,10 @@ export default connect((state) => ({state}),
                             <Route path={`/admin`} render={props => loggedOn ? <AdminLayout {...props} /> : <Redirect to="/"/>}/>
                             {/* <Route path={`/admin`} render={props => <AdminLayout {...props} />}/>
                             <Redirect to='/admin/dashboard'/> */}
-
                         </Switch>
                     </BrowserRouter>
                 :
-                    null
+                null
             )
         }
 
