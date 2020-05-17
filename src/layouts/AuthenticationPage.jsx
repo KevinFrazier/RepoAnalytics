@@ -34,7 +34,6 @@ class AuthenticationPage extends React.Component{
         else{
             return(
             
-
             <div className="wrapper">
 
                 {/* <SideBar {...this.props} routes={[]} image={null}

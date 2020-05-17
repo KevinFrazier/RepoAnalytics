@@ -57,10 +57,9 @@ export default connect((state) => ({state}),
         return (
           <Route
             path={prop.layout + prop.path}
-            render={props => (
+            render={(props) => (
               <prop.component
-                {...props}
-                handleClick={this.handleNotificationClick}
+                //handleClick={this.handleNotificationClick}
               />
             )}
             key={key}
@@ -99,28 +98,28 @@ export default connect((state) => ({state}),
       this.setState({ fixedClasses: "dropdown" });
     }
   };
-  componentDidMount() {
-    const {token} = this.props.state
-    this.props.getGithubData(token)
-  }
-  componentDidUpdate(e) {
-    if (
-      window.innerWidth < 993 &&
-      e.history.location.pathname !== e.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
-      document.documentElement.classList.toggle("nav-open");
-    }
-    if (e.history.action === "PUSH") {
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-      this.refs.mainPanel.scrollTop = 0;
-    }
-  }
+  // componentDidMount() {
+  //     // const {token,repos} = this.props.state
+  //     // if(!repos){this.props.getGithubData(token)}
+  // }
+  // componentDidUpdate(e) {
+  //   if (
+  //     window.innerWidth < 993 &&
+  //     e.history.location.pathname !== e.location.pathname &&
+  //     document.documentElement.className.indexOf("nav-open") !== -1
+  //   ) {
+  //     document.documentElement.classList.toggle("nav-open");
+  //   }
+  //   if (e.history.action === "PUSH") {
+  //     document.documentElement.scrollTop = 0;
+  //     document.scrollingElement.scrollTop = 0;
+  //     this.refs.mainPanel.scrollTop = 0;
+  //   }
+  // }
   renderSpinner(){
     return(
       <span >
-        <i className = "dot-spin"> Loading </i>
+        <i className = "dot-spin"> Loading... </i>
       </span>
     )
   }
@@ -154,8 +153,7 @@ export default connect((state) => ({state}),
   }
 
   render(){
-    const {repos} = this.props.state
-    return repos ? this.renderPages() : this.renderSpinner()
+    return this.props.state.repos ? this.renderPages() : this.renderSpinner()
   }
 })
 

@@ -122,7 +122,9 @@ export function login(provider){
                     //dispatch(postData(`articles`, {token: result.credential.accessToken}))
                     dispatch({type: constants.PUT_STATE, payload: {token: result.credential.accessToken, loggedOn : true}})
                     console.log("updating redirectLink")
-                    dispatch({type: constants.REDIRECT, payload:{redirectLink: "/admin/dashboard"}})
+                    //dispatch({type: constants.REDIRECT, payload:{redirectLink: "/admin/dashboard"}})
+                    dispatch(getGithubData(result.credential.accessToken))
+
                 })
                 // .then((result) => {postData(`articles/`, {token: result.credential.accessToken})})
                 // .then((result) => {dispatch({type: constants.PUT_STATE, payload: {status: "success", user: result.user, token: result.credential.accessToken, provider: provider, loggedOn : true, error: null}})})
@@ -153,4 +155,42 @@ export function postData(directory, data){
 
 export function setRepo(repo){
     return {type: constants.PUT_STATE, payload: {activeRepo: repo}}
+}
+
+
+/////Dashboard functions
+export function loadData(repo){
+
+    console.log("loadData")
+
+    const fields = Object.keys(repo)
+    const fetchingURLs = fields.filter((value) => constants.VALID_URLS.includes(value))
+
+    return function(dispatch, getState){
+        const {token} = getState()
+        for(let url of fetchingURLs){            
+            dispatch(fetchDataFrom(url, repo[url], token))
+        }
+
+        
+    }
+}
+
+function fetchDataFrom(key, url, token){
+
+    url = url.split("{")[0]
+    return function(dispatch, getState){
+        return fetch(url,{
+            method: 'GET',
+            mode: 'cors',
+            //body: JSON.stringify(data),
+            headers: {
+                "Authorization": "token " + token,
+                'Content-Type': 'application/json'
+              },    
+        })
+        .then(response => response.json())
+        .then(json => {console.log(key + ": ", json)})
+    }
+    
 }
